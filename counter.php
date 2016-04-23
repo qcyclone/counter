@@ -28,7 +28,8 @@ function counter(){
 		$counter[0]++;
 	}
 	$length = empty($everyDay[0]) ? 0:count($everyDay);
-	$today = date("Y-m-d ", $nowTime);
+	date_default_timezone_set("PRC") ; //设置时区
+	$today = date("Y-m-d", $nowTime);
 	$first = 1;  //今日第一个访问
 	$todayLog = 0 ; 
 	if($add||$flag ==0){
@@ -64,9 +65,13 @@ function counter(){
 	$result = array($totalNum , $todayNum);
 	return $result;
 }
-
-$num  = counter();
-echo "<br/>";
-echo "<p>总访问量:$num[0]</p>";
-echo  "<p>您是今天第$num[1]位访问者</p>";
+function seeHistroy(){
+	$everydayUrl ="./everyday.txt";
+	$everyDay = explode(';',file_get_contents($everydayUrl));
+	$length = empty($everyDay[0]) ? 0:count($everyDay);
+	for($i = 0;$i<$length;$i+=2){
+		echo $everyDay[$i].":";
+		echo $everyDay[$i+1]."<br/>";
+	}
+}
 ?>
