@@ -3,8 +3,8 @@
 	$num  = counter();
 
 	echo "<br/>";
-	echo "<a href='see_history.php'><p>总访问量:$num[0]</p></a>";
-	echo  "<p>您是今天第$num[1]位访问者</p>";
+	echo "<a href='showhistory.php' style='color:black;text-decoration:none'><b>历史访问:$num[0]</b></a><br/>";
+	echo  "<b>今日访问:$num[1]</b>";
 
 	
 ?>
